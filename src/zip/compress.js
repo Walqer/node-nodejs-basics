@@ -9,11 +9,11 @@ const compress = async () => {
     const pathToZipFile = path.resolve(path.join(ZIP_FOLDER, 'archive.gz'));
     const inputZipFile = fs.createReadStream(pathToFile);
     const outputUncompressedFile = fs.createWriteStream(pathToZipFile);
-    outputFile.on('finish', () => {
-        console.log('File successfully compressed to', pathToZipFile);
-    })
     const gzip = zlib.createGzip();
     inputZipFile.pipe(gzip).pipe(outputUncompressedFile);
+    outputUncompressedFile.on('finish', () => {
+        console.log('File successfully compressed to', pathToZipFile);
+    })
 };
 
 await compress();

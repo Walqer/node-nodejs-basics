@@ -6,7 +6,7 @@ import  zlib  from 'zlib'
 
 const decompress = async () => {
     const pathToFile = path.resolve(path.join(ZIP_FOLDER, 'fileToCompress.txt'));
-    const pathToZipFile = path.resolve(path.join(ZIP_FOLDER, 'farchive.gz'));
+    const pathToZipFile = path.resolve(path.join(ZIP_FOLDER, 'archive.gz'));
     const inputFile = fs.createReadStream(pathToZipFile);
     const outputFile = fs.createWriteStream(pathToFile);
     const gzip = zlib.createGunzip();
